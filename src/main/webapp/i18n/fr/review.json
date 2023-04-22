@@ -1,0 +1,33 @@
+{
+  "noGluGoApp": {
+    "review": {
+      "home": {
+        "title": "Reviews",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Review",
+        "createOrEditLabel": "Créer ou éditer un Review",
+        "notFound": "Aucun Review trouvé"
+      },
+      "created": "Un nouveau Review a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Review avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Review avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Review {{ id }} ?"
+      },
+      "detail": {
+        "title": "Review"
+      },
+      "id": "Id",
+      "title": "Title",
+      "content": "Content",
+      "rating": "Rating",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "userId": "User Id",
+      "menuItem": "Menu Item",
+      "product": "Product"
+    }
+  }
+}

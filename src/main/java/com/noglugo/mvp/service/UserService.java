@@ -9,10 +9,12 @@ import com.noglugo.mvp.security.AuthoritiesConstants;
 import com.noglugo.mvp.security.SecurityUtils;
 import com.noglugo.mvp.service.dto.AdminUserDTO;
 import com.noglugo.mvp.service.dto.UserDTO;
+import com.noglugo.mvp.web.rest.AccountResource;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
+import javax.security.auth.login.AccountNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
@@ -65,6 +67,17 @@ public class UserService {
                 log.debug("Activated user: {}", user);
                 return user;
             });
+    }
+
+    public Optional<AdminUserDTO> checkEmail(String email) {
+        return userRepository.findOneByEmailIgnoreCase(email).map(AdminUserDTO::new);
+    }
+
+    public AdminUserDTO getOneByEmail(String email) throws AccountNotFoundException {
+        return userRepository
+            .findOneByEmailIgnoreCase(email)
+            .map(AdminUserDTO::new)
+            .orElseThrow(() -> new AccountNotFoundException("User could not be found"));
     }
 
     public Optional<User> completePasswordReset(String newPassword, String key) {
@@ -309,6 +322,7 @@ public class UserService {
 
     /**
      * Gets a list of all the authorities.
+     *
      * @return a list of all the authorities.
      */
     @Transactional(readOnly = true)

@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="glutenProfile">
+      <h2 data-cy="glutenProfileDetailsHeading"><span jhiTranslate="noGluGoApp.glutenProfile.detail.title">Gluten Profile</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.id">Id</span></dt>
+        <dd>
+          <span>{{ glutenProfile.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.diseas">Diseas</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'noGluGoApp.Diseas.' + glutenProfile.diseas }}">{{ glutenProfile.diseas }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.otherDiseas">Other Diseas</span></dt>
+        <dd>
+          <span>{{ glutenProfile.otherDiseas }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.strictnessLevel">Strictness Level</span></dt>
+        <dd>
+          <span>{{ glutenProfile.strictnessLevel }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.diaryFreePreferenceLvl">Diary Free Preference Lvl</span></dt>
+        <dd>
+          <span>{{ glutenProfile.diaryFreePreferenceLvl }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.veganPreferenceLvl">Vegan Preference Lvl</span></dt>
+        <dd>
+          <span>{{ glutenProfile.veganPreferenceLvl }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.ketoPreferenceLvl">Keto Preference Lvl</span></dt>
+        <dd>
+          <span>{{ glutenProfile.ketoPreferenceLvl }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ glutenProfile.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ glutenProfile.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ glutenProfile.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ glutenProfile.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.glutenProfile.userId">User Id</span></dt>
+        <dd>
+          <span>{{ glutenProfile.userId }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/gluten-profile', glutenProfile.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

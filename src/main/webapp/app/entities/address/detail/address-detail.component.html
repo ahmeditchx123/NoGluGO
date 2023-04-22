@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="address">
+      <h2 data-cy="addressDetailsHeading"><span jhiTranslate="noGluGoApp.address.detail.title">Address</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.address.id">Id</span></dt>
+        <dd>
+          <span>{{ address.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.street1">Street 1</span></dt>
+        <dd>
+          <span>{{ address.street1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.street2">Street 2</span></dt>
+        <dd>
+          <span>{{ address.street2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.city">City</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'noGluGoApp.Governorate.' + address.city }}">{{ address.city }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.postalCode">Postal Code</span></dt>
+        <dd>
+          <span>{{ address.postalCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ address.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ address.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ address.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ address.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.orderSA">Order SA</span></dt>
+        <dd>
+          <div *ngIf="address.orderSA">
+            <a [routerLink]="['/order', address.orderSA.id, 'view']">{{ address.orderSA.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.orderBA">Order BA</span></dt>
+        <dd>
+          <div *ngIf="address.orderBA">
+            <a [routerLink]="['/order', address.orderBA.id, 'view']">{{ address.orderBA.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.store">Store</span></dt>
+        <dd>
+          <div *ngIf="address.store">
+            <a [routerLink]="['/store', address.store.id, 'view']">{{ address.store.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.address.restaurant">Restaurant</span></dt>
+        <dd>
+          <div *ngIf="address.restaurant">
+            <a [routerLink]="['/restaurant', address.restaurant.id, 'view']">{{ address.restaurant.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/address', address.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

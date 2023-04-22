@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="orderItem">
+      <h2 data-cy="orderItemDetailsHeading"><span jhiTranslate="noGluGoApp.orderItem.detail.title">Order Item</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.orderItem.id">Id</span></dt>
+        <dd>
+          <span>{{ orderItem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.orderItem.qty">Qty</span></dt>
+        <dd>
+          <span>{{ orderItem.qty }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.orderItem.totalPrice">Total Price</span></dt>
+        <dd>
+          <span>{{ orderItem.totalPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.orderItem.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ orderItem.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.orderItem.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ orderItem.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.orderItem.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ orderItem.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.orderItem.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ orderItem.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.orderItem.order">Order</span></dt>
+        <dd>
+          <div *ngIf="orderItem.order">
+            <a [routerLink]="['/order', orderItem.order.id, 'view']">{{ orderItem.order.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/order-item', orderItem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

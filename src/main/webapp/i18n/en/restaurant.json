@@ -1,0 +1,36 @@
+{
+  "noGluGoApp": {
+    "restaurant": {
+      "home": {
+        "title": "Restaurants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Restaurant",
+        "createOrEditLabel": "Create or edit a Restaurant",
+        "notFound": "No Restaurants found"
+      },
+      "created": "A new Restaurant is created with identifier {{ param }}",
+      "updated": "A Restaurant is updated with identifier {{ param }}",
+      "deleted": "A Restaurant is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Restaurant {{ id }}?"
+      },
+      "detail": {
+        "title": "Restaurant"
+      },
+      "id": "Id",
+      "name": "Name",
+      "description": "Description",
+      "telephone": "Telephone",
+      "imgPath": "Img Path",
+      "isDedicatedGlutenFree": "Is Dedicated Gluten Free",
+      "website": "Website",
+      "tableNumber": "Table Number",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "restaurantAddress": "Restaurant Address",
+      "restaurantMenu": "Restaurant Menu"
+    }
+  }
+}

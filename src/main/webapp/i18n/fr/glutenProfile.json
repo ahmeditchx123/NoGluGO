@@ -1,0 +1,34 @@
+{
+  "noGluGoApp": {
+    "glutenProfile": {
+      "home": {
+        "title": "GlutenProfiles",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Gluten Profile",
+        "createOrEditLabel": "Créer ou éditer un Gluten Profile",
+        "notFound": "Aucun Gluten Profile trouvé"
+      },
+      "created": "Un nouveau Gluten Profile a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Gluten Profile avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Gluten Profile avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Gluten Profile {{ id }} ?"
+      },
+      "detail": {
+        "title": "Gluten Profile"
+      },
+      "id": "Id",
+      "diseas": "Diseas",
+      "otherDiseas": "Other Diseas",
+      "strictnessLevel": "Strictness Level",
+      "diaryFreePreferenceLvl": "Diary Free Preference Lvl",
+      "veganPreferenceLvl": "Vegan Preference Lvl",
+      "ketoPreferenceLvl": "Keto Preference Lvl",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "userId": "User Id"
+    }
+  }
+}

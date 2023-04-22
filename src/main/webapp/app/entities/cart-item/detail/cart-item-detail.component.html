@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cartItem">
+      <h2 data-cy="cartItemDetailsHeading"><span jhiTranslate="noGluGoApp.cartItem.detail.title">Cart Item</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.cartItem.id">Id</span></dt>
+        <dd>
+          <span>{{ cartItem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cartItem.qty">Qty</span></dt>
+        <dd>
+          <span>{{ cartItem.qty }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cartItem.totalPrice">Total Price</span></dt>
+        <dd>
+          <span>{{ cartItem.totalPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cartItem.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ cartItem.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cartItem.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ cartItem.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cartItem.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ cartItem.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cartItem.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ cartItem.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cartItem.cart">Cart</span></dt>
+        <dd>
+          <div *ngIf="cartItem.cart">
+            <a [routerLink]="['/cart', cartItem.cart.id, 'view']">{{ cartItem.cart.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cart-item', cartItem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

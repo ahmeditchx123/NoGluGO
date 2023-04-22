@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="productInfo">
+      <h2 data-cy="productInfoDetailsHeading"><span jhiTranslate="noGluGoApp.productInfo.detail.title">Product Info</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.productInfo.id">Id</span></dt>
+        <dd>
+          <span>{{ productInfo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.productInfo.qtyInStock">Qty In Stock</span></dt>
+        <dd>
+          <span>{{ productInfo.qtyInStock }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.productInfo.isGlutenFree">Is Gluten Free</span></dt>
+        <dd>
+          <span>{{ productInfo.isGlutenFree }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.productInfo.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ productInfo.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.productInfo.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ productInfo.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.productInfo.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ productInfo.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.productInfo.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ productInfo.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.productInfo.product">Product</span></dt>
+        <dd>
+          <div *ngIf="productInfo.product">
+            <a [routerLink]="['/product', productInfo.product.id, 'view']">{{ productInfo.product.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product-info', productInfo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

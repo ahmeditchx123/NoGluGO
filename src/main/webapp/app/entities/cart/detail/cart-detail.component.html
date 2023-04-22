@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cart">
+      <h2 data-cy="cartDetailsHeading"><span jhiTranslate="noGluGoApp.cart.detail.title">Cart</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.cart.id">Id</span></dt>
+        <dd>
+          <span>{{ cart.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cart.totalItems">Total Items</span></dt>
+        <dd>
+          <span>{{ cart.totalItems }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cart.totalPrice">Total Price</span></dt>
+        <dd>
+          <span>{{ cart.totalPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cart.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ cart.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cart.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ cart.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cart.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ cart.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cart.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ cart.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.cart.userId">User Id</span></dt>
+        <dd>
+          <span>{{ cart.userId }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cart', cart.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

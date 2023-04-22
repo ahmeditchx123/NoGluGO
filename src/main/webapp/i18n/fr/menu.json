@@ -1,0 +1,31 @@
+{
+  "noGluGoApp": {
+    "menu": {
+      "home": {
+        "title": "Menus",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Menu",
+        "createOrEditLabel": "Créer ou éditer un Menu",
+        "notFound": "Aucun Menu trouvé"
+      },
+      "created": "Un nouveau Menu a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Menu avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Menu avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Menu {{ id }} ?"
+      },
+      "detail": {
+        "title": "Menu"
+      },
+      "id": "Id",
+      "name": "Name",
+      "description": "Description",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "restaurant": "Restaurant",
+      "menuItems": "Menu Items"
+    }
+  }
+}

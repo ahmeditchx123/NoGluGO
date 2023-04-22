@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="menuItem">
+      <h2 data-cy="menuItemDetailsHeading"><span jhiTranslate="noGluGoApp.menuItem.detail.title">Menu Item</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.menuItem.id">Id</span></dt>
+        <dd>
+          <span>{{ menuItem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.menuItem.name">Name</span></dt>
+        <dd>
+          <span>{{ menuItem.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.menuItem.content">Content</span></dt>
+        <dd>
+          <span>{{ menuItem.content }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.menuItem.imgPath">Img Path</span></dt>
+        <dd>
+          <span>{{ menuItem.imgPath }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.menuItem.unitPrice">Unit Price</span></dt>
+        <dd>
+          <span>{{ menuItem.unitPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.menuItem.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ menuItem.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.menuItem.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ menuItem.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.menuItem.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ menuItem.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.menuItem.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ menuItem.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.menuItem.menu">Menu</span></dt>
+        <dd>
+          <div *ngIf="menuItem.menu">
+            <a [routerLink]="['/menu', menuItem.menu.id, 'view']">{{ menuItem.menu.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/menu-item', menuItem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

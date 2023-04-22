@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="store">
+      <h2 data-cy="storeDetailsHeading"><span jhiTranslate="noGluGoApp.store.detail.title">Store</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.store.id">Id</span></dt>
+        <dd>
+          <span>{{ store.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.name">Name</span></dt>
+        <dd>
+          <span>{{ store.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.description">Description</span></dt>
+        <dd>
+          <span>{{ store.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.telephone">Telephone</span></dt>
+        <dd>
+          <span>{{ store.telephone }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.imgPath">Img Path</span></dt>
+        <dd>
+          <span>{{ store.imgPath }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.isDedicatedGlutenFree">Is Dedicated Gluten Free</span></dt>
+        <dd>
+          <span>{{ store.isDedicatedGlutenFree }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.website">Website</span></dt>
+        <dd>
+          <span>{{ store.website }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.hasDeliveryMode">Has Delivery Mode</span></dt>
+        <dd>
+          <span>{{ store.hasDeliveryMode }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ store.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ store.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ store.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.store.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ store.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/store', store.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

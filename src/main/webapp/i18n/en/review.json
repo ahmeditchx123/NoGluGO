@@ -1,0 +1,33 @@
+{
+  "noGluGoApp": {
+    "review": {
+      "home": {
+        "title": "Reviews",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Review",
+        "createOrEditLabel": "Create or edit a Review",
+        "notFound": "No Reviews found"
+      },
+      "created": "A new Review is created with identifier {{ param }}",
+      "updated": "A Review is updated with identifier {{ param }}",
+      "deleted": "A Review is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Review {{ id }}?"
+      },
+      "detail": {
+        "title": "Review"
+      },
+      "id": "Id",
+      "title": "Title",
+      "content": "Content",
+      "rating": "Rating",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "userId": "User Id",
+      "menuItem": "Menu Item",
+      "product": "Product"
+    }
+  }
+}

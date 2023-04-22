@@ -48,6 +48,31 @@ public class CacheConfiguration {
             createCache(cm, com.noglugo.mvp.domain.User.class.getName());
             createCache(cm, com.noglugo.mvp.domain.Authority.class.getName());
             createCache(cm, com.noglugo.mvp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.noglugo.mvp.domain.Store.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Store.class.getName() + ".products");
+            createCache(cm, com.noglugo.mvp.domain.Restaurant.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Address.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Location.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Product.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Product.class.getName() + ".reviews");
+            createCache(cm, com.noglugo.mvp.domain.ProductInfo.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Review.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Menu.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Menu.class.getName() + ".menuItems");
+            createCache(cm, com.noglugo.mvp.domain.MenuItem.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.MenuItem.class.getName() + ".reviews");
+            createCache(cm, com.noglugo.mvp.domain.Cart.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Cart.class.getName() + ".cartItems");
+            createCache(cm, com.noglugo.mvp.domain.CartItem.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.CartItem.class.getName() + ".products");
+            createCache(cm, com.noglugo.mvp.domain.Order.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Order.class.getName() + ".orderItems");
+            createCache(cm, com.noglugo.mvp.domain.OrderItem.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.OrderItem.class.getName() + ".products");
+            createCache(cm, com.noglugo.mvp.domain.Article.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.Article.class.getName() + ".comments");
+            createCache(cm, com.noglugo.mvp.domain.Comment.class.getName());
+            createCache(cm, com.noglugo.mvp.domain.GlutenProfile.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

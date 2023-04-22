@@ -1,0 +1,97 @@
+{
+  "applications": ["noGluGo"],
+  "changelogDate": "20230408114059",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "product",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sku",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imgPath",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "unitPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "isAvailable",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Product",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "cartItem",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "cartItem",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "orderItem",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "orderItem",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "store",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "store",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "productInfo",
+      "otherEntityRelationshipName": "product",
+      "ownerSide": false,
+      "relationshipName": "information",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "review",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "reviews",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}
