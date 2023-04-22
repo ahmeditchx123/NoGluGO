@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="order">
+      <h2 data-cy="orderDetailsHeading"><span jhiTranslate="noGluGoApp.order.detail.title">Order</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.order.id">Id</span></dt>
+        <dd>
+          <span>{{ order.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.totalPrice">Total Price</span></dt>
+        <dd>
+          <span>{{ order.totalPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.totalItems">Total Items</span></dt>
+        <dd>
+          <span>{{ order.totalItems }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'noGluGoApp.OrderStatus.' + order.status }}">{{ order.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.deliveryMethod">Delivery Method</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'noGluGoApp.DeliveryMethod.' + order.deliveryMethod }}">{{ order.deliveryMethod }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.paymentMethod">Payment Method</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'noGluGoApp.PaymentMethod.' + order.paymentMethod }}">{{ order.paymentMethod }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ order.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ order.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ order.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ order.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.order.userId">User Id</span></dt>
+        <dd>
+          <span>{{ order.userId }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/order', order.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

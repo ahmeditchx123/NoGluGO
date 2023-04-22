@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="product">
+      <h2 data-cy="productDetailsHeading"><span jhiTranslate="noGluGoApp.product.detail.title">Product</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.product.id">Id</span></dt>
+        <dd>
+          <span>{{ product.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.name">Name</span></dt>
+        <dd>
+          <span>{{ product.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.sku">Sku</span></dt>
+        <dd>
+          <span>{{ product.sku }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.description">Description</span></dt>
+        <dd>
+          <span>{{ product.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.imgPath">Img Path</span></dt>
+        <dd>
+          <span>{{ product.imgPath }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.unitPrice">Unit Price</span></dt>
+        <dd>
+          <span>{{ product.unitPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.isAvailable">Is Available</span></dt>
+        <dd>
+          <span>{{ product.isAvailable }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ product.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ product.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ product.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ product.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.cartItem">Cart Item</span></dt>
+        <dd>
+          <div *ngIf="product.cartItem">
+            <a [routerLink]="['/cart-item', product.cartItem.id, 'view']">{{ product.cartItem.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.orderItem">Order Item</span></dt>
+        <dd>
+          <div *ngIf="product.orderItem">
+            <a [routerLink]="['/order-item', product.orderItem.id, 'view']">{{ product.orderItem.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.product.store">Store</span></dt>
+        <dd>
+          <div *ngIf="product.store">
+            <a [routerLink]="['/store', product.store.id, 'view']">{{ product.store.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

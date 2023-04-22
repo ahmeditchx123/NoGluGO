@@ -1,0 +1,33 @@
+{
+  "noGluGoApp": {
+    "menuItem": {
+      "home": {
+        "title": "MenuItems",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Menu Item",
+        "createOrEditLabel": "Créer ou éditer un Menu Item",
+        "notFound": "Aucun Menu Item trouvé"
+      },
+      "created": "Un nouveau Menu Item a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Menu Item avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Menu Item avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Menu Item {{ id }} ?"
+      },
+      "detail": {
+        "title": "Menu Item"
+      },
+      "id": "Id",
+      "name": "Name",
+      "content": "Content",
+      "imgPath": "Img Path",
+      "unitPrice": "Unit Price",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "menu": "Menu",
+      "reviews": "Reviews"
+    }
+  }
+}

@@ -1,0 +1,281 @@
+application {
+  config {
+    baseName noGluGo
+    applicationType monolith
+    packageName com.noglugo.mvp,
+    authenticationType jwt,
+    databaseType sql,
+    devDatabaseType postgresql,
+    prodDatabaseType postgresql,
+    serverPort 8080,
+    buildTool maven,
+    clientFramework angularX,
+    clientPackageManager npm,
+    languages [en, fr],
+    nativeLanguage en,
+    reactive false
+  }
+  entities *
+}
+
+entity Store {
+	id UUID,
+	name String required,
+    description String,
+    telephone String required,
+    imgPath String required,
+    isDedicatedGlutenFree Boolean required,
+    website String,
+    hasDeliveryMode Boolean required,
+    createdBy String,
+    createdDate Instant,
+    lastModifiedBy String,
+    lastModifiedDate Instant
+}
+
+entity Restaurant {
+	id UUID,
+	name String required,
+    description String,
+    telephone String required,
+    imgPath String required,
+    isDedicatedGlutenFree Boolean required,
+    website String,
+    tableNumber Integer required,
+    createdBy String,
+    createdDate Instant,
+    lastModifiedBy String,
+    lastModifiedDate Instant
+}
+
+entity Address {
+	id UUID,
+    street1 String required,
+    street2 String,
+    city Governorate,
+    postalCode String required,
+    createdBy String,
+    createdDate Instant,
+    lastModifiedBy String,
+    lastModifiedDate Instant
+}
+
+enum Governorate {
+	TUNIS
+    ARIANA
+    BEN_AROUS
+    MANOUBA,
+    NABEUL,
+    ZAGHOUAN,
+    BIZERTE,
+    BEJA,
+    JENDOUBA,
+    KEF,
+    SILIANA,
+    SOUSSE,
+    MONASTIR,
+    MAHDIA,
+    SFAX,
+    GAFSA,
+    TOZEUR,
+    KEF,
+    KAIROUAN,
+    KASSERINE,
+    SIDI_BOUZID,
+    GABES,
+    MEDENINE,
+    TATAOUINE
+}
+
+entity Location {
+	  id UUID,
+    lattitude Double required,
+    longtitude Double required,
+    createdBy String,
+    createdDate Instant,
+    lastModifiedBy String,
+    lastModifiedDate Instant
+}
+
+entity Product {
+  id UUID,
+  name String required,
+  sku String required,
+  description String,
+  imgPath String required,
+  unitPrice Double required,
+  isAvailable Boolean required,
+  createdBy String,
+  createdDate Instant,
+  lastModifiedBy String,
+  lastModifiedDate Instant
+}
+
+entity ProductInfo {
+  id UUID,
+  qtyInStock Integer required,
+  isGlutenFree Boolean required,
+  createdBy String,
+  createdDate Instant,
+  lastModifiedBy String,
+  lastModifiedDate Instant
+}
+
+entity Review {
+  id UUID,
+  title String required,
+  content String required,
+  rating Integer required,
+  createdBy String,
+  createdDate Instant,
+  lastModifiedBy String,
+  lastModifiedDate Instant,
+  userId Long // Many
+}
+
+entity Menu {
+  id UUID,
+  name String required,
+  description String,
+  createdBy String,
+  createdDate Instant,
+  lastModifiedBy String,
+  lastModifiedDate Instant
+}
+
+entity MenuItem {
+  id UUID,
+  name String required,
+  content String required,
+  imgPath String required,
+  unitPrice Double required,
+  createdBy String,
+  createdDate Instant,
+  lastModifiedBy String,
+  lastModifiedDate Instant
+}
+
+entity Cart {
+  id UUID,
+  totalItems Integer,
+  totalPrice Double,
+  createdBy String,
+  createdDate Instant,
+  lastModifiedBy String,
+  lastModifiedDate Instant,
+  userId Long, //one
+}
+
+entity CartItem {
+  id UUID,
+  qty Integer required,
+  totalPrice Double required,
+  createdBy String,
+  createdDate Instant,
+  lastModifiedBy String,
+  lastModifiedDate Instant
+}
+
+entity Order {
+  id UUID,
+  totalPrice Double required,
+  totalItems Integer required,
+  status OrderStatus,
+  deliveryMethod DeliveryMethod,
+  paymentMethod PaymentMethod,
+  createdBy String,
+  createdDate Instant,
+  lastModifiedBy String,
+  lastModifiedDate Instant,
+  userId Long // many
+}
+
+entity OrderItem {
+	id UUID,
+    qty Integer required,
+  	totalPrice Double required,
+  	createdBy String,
+  	createdDate Instant,
+  	lastModifiedBy String,
+  	lastModifiedDate Instant
+}
+
+entity Article {
+	  id UUID,
+    name String required,
+    content String required,
+    imgPath String,
+    createdBy String,
+  	createdDate Instant,
+  	lastModifiedBy String,
+  	lastModifiedDate Instant,
+    userId Long, // many
+}
+
+entity Comment {
+	  id UUID,
+    content String required,
+    createdBy String,
+  	createdDate Instant,
+  	lastModifiedBy String,
+  	lastModifiedDate Instant,
+    userId Long,
+}
+
+entity GlutenProfile {
+	  id UUID,
+    diseas Diseas,
+    otherDiseas String,
+    strictnessLevel Integer,
+    diaryFreePreferenceLvl Integer,
+    veganPreferenceLvl Integer,
+    ketoPreferenceLvl Integer,
+    createdBy String,
+  	createdDate Instant,
+  	lastModifiedBy String,
+  	lastModifiedDate Instant,
+    userId Long // one
+}
+
+enum Diseas {
+	CELIAC, GLUTEN_SENSITIVE, GLUTEN_INTOLERENCE, CHRON_DISEAS, IBS, OTHER
+}
+
+enum OrderStatus {
+	NOT_VERIFIED, VERIFIED, PREPARING, EXHIBITED, SHIPPED
+}
+
+enum DeliveryMethod {
+	RETRIEVAL, SHIPPING
+}
+
+enum PaymentMethod {
+	PAYMENT_IN_DELIVERY, PAYMENT_IN_RETRIEVAL
+}
+
+relationship OneToOne {
+  Location{address} to Address{location}
+  ProductInfo{product} to Product{information}
+  Address{orderSA} to Order{shippingAddress}
+  Address{orderBA} to Order{billingAddress}
+  Address{store} to Store{storeAddress}
+  Address{restaurant} to Restaurant{restaurantAddress}
+  Menu{restaurant} to Restaurant{restaurantMenu}
+}
+
+relationship ManyToOne {
+  OrderItem{order} to Order{orderItems}
+  CartItem{cart} to Cart{cartItems}
+  Product{cartItem} to CartItem{products}
+  Product{orderItem} to OrderItem{products}
+  MenuItem{menu} to Menu{menuItems}
+  Review{menuItem} to MenuItem{reviews}
+  Review{product} to Product{reviews}
+  Product{store} to Store{products}
+  Comment{article} to Article{comments}
+}
+
+dto * with mapstruct
+paginate * with pagination
+service * with serviceImpl
+filter *

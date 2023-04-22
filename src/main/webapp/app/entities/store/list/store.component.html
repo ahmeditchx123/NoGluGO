@@ -1,0 +1,183 @@
+<div>
+  <h2 id="page-heading" data-cy="StoreHeading">
+    <span jhiTranslate="noGluGoApp.store.home.title">Stores</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="noGluGoApp.store.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-store"
+        [routerLink]="['/store/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="noGluGoApp.store.home.createLabel"> Create a new Store </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="stores?.length === 0">
+    <span jhiTranslate="noGluGoApp.store.home.notFound">No Stores found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="stores && stores.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="telephone">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.telephone">Telephone</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="imgPath">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.imgPath">Img Path</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="isDedicatedGlutenFree">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.isDedicatedGlutenFree">Is Dedicated Gluten Free</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="website">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.website">Website</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="hasDeliveryMode">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.hasDeliveryMode">Has Delivery Mode</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.lastModifiedBy">Last Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedDate">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.store.lastModifiedDate">Last Modified Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let store of stores; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/store', store.id, 'view']">{{ store.id }}</a>
+          </td>
+          <td>{{ store.name }}</td>
+          <td>{{ store.description }}</td>
+          <td>{{ store.telephone }}</td>
+          <td>{{ store.imgPath }}</td>
+          <td>{{ store.isDedicatedGlutenFree }}</td>
+          <td>{{ store.website }}</td>
+          <td>{{ store.hasDeliveryMode }}</td>
+          <td>{{ store.createdBy }}</td>
+          <td>{{ store.createdDate | formatMediumDatetime }}</td>
+          <td>{{ store.lastModifiedBy }}</td>
+          <td>{{ store.lastModifiedDate | formatMediumDatetime }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/product']"
+                [queryParams]="{ 'filter[storeId.in]': store.id }"
+                class="btn btn-info btn-sm"
+                data-cy="filterOtherEntityButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span
+                  class="d-none d-md-inline"
+                  jhiTranslate="entity.action.show"
+                  [translateValues]="{ otherEntity: ('noGluGoApp.store.products' | translate) }"
+                  >Show Product</span
+                >
+              </button>
+              <button type="submit" [routerLink]="['/store', store.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/store', store.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(store)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="stores && stores.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

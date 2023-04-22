@@ -1,0 +1,13 @@
+{
+  "noGluGoApp": {
+    "Diseas": {
+      "null": "",
+      "CELIAC": "CELIAC",
+      "GLUTEN_SENSITIVE": "GLUTEN_SENSITIVE",
+      "GLUTEN_INTOLERENCE": "GLUTEN_INTOLERENCE",
+      "CHRON_DISEAS": "CHRON_DISEAS",
+      "IBS": "IBS",
+      "OTHER": "OTHER"
+    }
+  }
+}

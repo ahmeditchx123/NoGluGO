@@ -1,0 +1,59 @@
+{
+  "applications": ["noGluGo"],
+  "changelogDate": "20230408114107",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "order_item",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "qty",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "totalPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "OrderItem",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "orderItems",
+      "relationshipName": "order",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "orderItem",
+      "relationshipName": "products",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

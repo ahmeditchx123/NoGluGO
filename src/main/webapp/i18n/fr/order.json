@@ -1,0 +1,36 @@
+{
+  "noGluGoApp": {
+    "order": {
+      "home": {
+        "title": "Orders",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Order",
+        "createOrEditLabel": "Créer ou éditer un Order",
+        "notFound": "Aucun Order trouvé"
+      },
+      "created": "Un nouveau Order a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Order avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Order avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Order {{ id }} ?"
+      },
+      "detail": {
+        "title": "Order"
+      },
+      "id": "Id",
+      "totalPrice": "Total Price",
+      "totalItems": "Total Items",
+      "status": "Status",
+      "deliveryMethod": "Delivery Method",
+      "paymentMethod": "Payment Method",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "userId": "User Id",
+      "shippingAddress": "Shipping Address",
+      "billingAddress": "Billing Address",
+      "orderItems": "Order Items"
+    }
+  }
+}

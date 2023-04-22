@@ -1,0 +1,132 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-cart-item-heading" data-cy="CartItemCreateUpdateHeading" jhiTranslate="noGluGoApp.cartItem.home.createOrEditLabel">
+        Create or edit a Cart Item
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="noGluGoApp.cartItem.id" for="field_id">Id</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.cartItem.qty" for="field_qty">Qty</label>
+          <input type="number" class="form-control" name="qty" id="field_qty" data-cy="qty" formControlName="qty" />
+          <div *ngIf="editForm.get('qty')!.invalid && (editForm.get('qty')!.dirty || editForm.get('qty')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('qty')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('qty')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.cartItem.totalPrice" for="field_totalPrice">Total Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="totalPrice"
+            id="field_totalPrice"
+            data-cy="totalPrice"
+            formControlName="totalPrice"
+          />
+          <div *ngIf="editForm.get('totalPrice')!.invalid && (editForm.get('totalPrice')!.dirty || editForm.get('totalPrice')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('totalPrice')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('totalPrice')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.cartItem.createdBy" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.cartItem.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.cartItem.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.cartItem.lastModifiedDate" for="field_lastModifiedDate"
+            >Last Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModifiedDate"
+              data-cy="lastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="lastModifiedDate"
+              formControlName="lastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.cartItem.cart" for="field_cart">Cart</label>
+          <select class="form-control" id="field_cart" data-cy="cart" name="cart" formControlName="cart" [compareWith]="compareCart">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="cartOption" *ngFor="let cartOption of cartsSharedCollection">{{ cartOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

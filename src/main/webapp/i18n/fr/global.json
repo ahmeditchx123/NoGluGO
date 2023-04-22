@@ -7,6 +7,22 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
+        "store": "Store",
+        "restaurant": "Restaurant",
+        "address": "Address",
+        "location": "Location",
+        "product": "Product",
+        "productInfo": "Product Info",
+        "review": "Review",
+        "menu": "Menu",
+        "menuItem": "Menu Item",
+        "cart": "Cart",
+        "cartItem": "Cart Item",
+        "order": "Order",
+        "orderItem": "Order Item",
+        "article": "Article",
+        "comment": "Comment",
+        "glutenProfile": "Gluten Profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

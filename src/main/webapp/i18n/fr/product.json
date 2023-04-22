@@ -1,0 +1,38 @@
+{
+  "noGluGoApp": {
+    "product": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Product",
+        "createOrEditLabel": "Créer ou éditer un Product",
+        "notFound": "Aucun Product trouvé"
+      },
+      "created": "Un nouveau Product a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Product avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Product avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Product {{ id }} ?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "id": "Id",
+      "name": "Name",
+      "sku": "Sku",
+      "description": "Description",
+      "imgPath": "Img Path",
+      "unitPrice": "Unit Price",
+      "isAvailable": "Is Available",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "cartItem": "Cart Item",
+      "orderItem": "Order Item",
+      "store": "Store",
+      "information": "Information",
+      "reviews": "Reviews"
+    }
+  }
+}

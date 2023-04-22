@@ -1,0 +1,91 @@
+{
+  "applications": ["noGluGo"],
+  "changelogDate": "20230408114057",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "address",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "street1",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "street2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "Governorate",
+      "fieldValues": "TUNIS,ARIANA,BEN_AROUS,MANOUBA,NABEUL,ZAGHOUAN,BIZERTE,BEJA,JENDOUBA,KEF,SILIANA,SOUSSE,MONASTIR,MAHDIA,SFAX,GAFSA,TOZEUR,KAIROUAN,KASSERINE,SIDI_BOUZID,GABES,MEDENINE,TATAOUINE"
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Address",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "shippingAddress",
+      "ownerSide": true,
+      "relationshipName": "orderSA",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "billingAddress",
+      "ownerSide": true,
+      "relationshipName": "orderBA",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "store",
+      "otherEntityRelationshipName": "storeAddress",
+      "ownerSide": true,
+      "relationshipName": "store",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "restaurantAddress",
+      "ownerSide": true,
+      "relationshipName": "restaurant",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "address",
+      "ownerSide": false,
+      "relationshipName": "location",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

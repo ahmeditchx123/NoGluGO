@@ -1,0 +1,9 @@
+{
+  "noGluGoApp": {
+    "DeliveryMethod": {
+      "null": "",
+      "RETRIEVAL": "RETRIEVAL",
+      "SHIPPING": "SHIPPING"
+    }
+  }
+}

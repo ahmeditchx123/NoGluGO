@@ -1,0 +1,183 @@
+<div>
+  <h2 id="page-heading" data-cy="MenuItemHeading">
+    <span jhiTranslate="noGluGoApp.menuItem.home.title">Menu Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="noGluGoApp.menuItem.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-menu-item"
+        [routerLink]="['/menu-item/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="noGluGoApp.menuItem.home.createLabel"> Create a new Menu Item </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="menuItems?.length === 0">
+    <span jhiTranslate="noGluGoApp.menuItem.home.notFound">No Menu Items found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="menuItems && menuItems.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="content">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.content">Content</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="imgPath">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.imgPath">Img Path</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="unitPrice">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.unitPrice">Unit Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.lastModifiedBy">Last Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedDate">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.lastModifiedDate">Last Modified Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="menu.id">
+            <div class="d-flex">
+              <span jhiTranslate="noGluGoApp.menuItem.menu">Menu</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let menuItem of menuItems; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/menu-item', menuItem.id, 'view']">{{ menuItem.id }}</a>
+          </td>
+          <td>{{ menuItem.name }}</td>
+          <td>{{ menuItem.content }}</td>
+          <td>{{ menuItem.imgPath }}</td>
+          <td>{{ menuItem.unitPrice }}</td>
+          <td>{{ menuItem.createdBy }}</td>
+          <td>{{ menuItem.createdDate | formatMediumDatetime }}</td>
+          <td>{{ menuItem.lastModifiedBy }}</td>
+          <td>{{ menuItem.lastModifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="menuItem.menu">
+              <a [routerLink]="['/menu', menuItem.menu.id, 'view']">{{ menuItem.menu.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/review']"
+                [queryParams]="{ 'filter[menuItemId.in]': menuItem.id }"
+                class="btn btn-info btn-sm"
+                data-cy="filterOtherEntityButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span
+                  class="d-none d-md-inline"
+                  jhiTranslate="entity.action.show"
+                  [translateValues]="{ otherEntity: ('noGluGoApp.menuItem.reviews' | translate) }"
+                  >Show Review</span
+                >
+              </button>
+              <button
+                type="submit"
+                [routerLink]="['/menu-item', menuItem.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/menu-item', menuItem.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(menuItem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="menuItems && menuItems.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

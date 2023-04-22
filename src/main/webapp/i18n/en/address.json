@@ -1,0 +1,36 @@
+{
+  "noGluGoApp": {
+    "address": {
+      "home": {
+        "title": "Addresses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Address",
+        "createOrEditLabel": "Create or edit a Address",
+        "notFound": "No Addresses found"
+      },
+      "created": "A new Address is created with identifier {{ param }}",
+      "updated": "A Address is updated with identifier {{ param }}",
+      "deleted": "A Address is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Address {{ id }}?"
+      },
+      "detail": {
+        "title": "Address"
+      },
+      "id": "Id",
+      "street1": "Street 1",
+      "street2": "Street 2",
+      "city": "City",
+      "postalCode": "Postal Code",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "orderSA": "Order SA",
+      "orderBA": "Order BA",
+      "store": "Store",
+      "restaurant": "Restaurant",
+      "location": "Location"
+    }
+  }
+}

@@ -1,0 +1,186 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-address-heading" data-cy="AddressCreateUpdateHeading" jhiTranslate="noGluGoApp.address.home.createOrEditLabel">
+        Create or edit a Address
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.id" for="field_id">Id</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.street1" for="field_street1">Street 1</label>
+          <input type="text" class="form-control" name="street1" id="field_street1" data-cy="street1" formControlName="street1" />
+          <div *ngIf="editForm.get('street1')!.invalid && (editForm.get('street1')!.dirty || editForm.get('street1')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('street1')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.street2" for="field_street2">Street 2</label>
+          <input type="text" class="form-control" name="street2" id="field_street2" data-cy="street2" formControlName="street2" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.city" for="field_city">City</label>
+          <select class="form-control" name="city" formControlName="city" id="field_city" data-cy="city">
+            <option [ngValue]="null">{{ 'noGluGoApp.Governorate.null' | translate }}</option>
+            <option *ngFor="let governorate of governorateValues" [value]="governorate">
+              {{ 'noGluGoApp.Governorate.' + governorate | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.postalCode" for="field_postalCode">Postal Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="postalCode"
+            id="field_postalCode"
+            data-cy="postalCode"
+            formControlName="postalCode"
+          />
+          <div *ngIf="editForm.get('postalCode')!.invalid && (editForm.get('postalCode')!.dirty || editForm.get('postalCode')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('postalCode')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.createdBy" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.lastModifiedDate" for="field_lastModifiedDate"
+            >Last Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModifiedDate"
+              data-cy="lastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="lastModifiedDate"
+              formControlName="lastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.orderSA" for="field_orderSA">Order SA</label>
+          <select
+            class="form-control"
+            id="field_orderSA"
+            data-cy="orderSA"
+            name="orderSA"
+            formControlName="orderSA"
+            [compareWith]="compareOrder"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="orderOption" *ngFor="let orderOption of orderSASCollection">{{ orderOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.orderBA" for="field_orderBA">Order BA</label>
+          <select
+            class="form-control"
+            id="field_orderBA"
+            data-cy="orderBA"
+            name="orderBA"
+            formControlName="orderBA"
+            [compareWith]="compareOrder"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="orderOption" *ngFor="let orderOption of orderBASCollection">{{ orderOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.store" for="field_store">Store</label>
+          <select class="form-control" id="field_store" data-cy="store" name="store" formControlName="store" [compareWith]="compareStore">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="storeOption" *ngFor="let storeOption of storesCollection">{{ storeOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="noGluGoApp.address.restaurant" for="field_restaurant">Restaurant</label>
+          <select
+            class="form-control"
+            id="field_restaurant"
+            data-cy="restaurant"
+            name="restaurant"
+            formControlName="restaurant"
+            [compareWith]="compareRestaurant"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="restaurantOption" *ngFor="let restaurantOption of restaurantsCollection">{{ restaurantOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

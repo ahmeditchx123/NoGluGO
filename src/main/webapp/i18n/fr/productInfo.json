@@ -1,0 +1,30 @@
+{
+  "noGluGoApp": {
+    "productInfo": {
+      "home": {
+        "title": "ProductInfos",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Product Info",
+        "createOrEditLabel": "Créer ou éditer un Product Info",
+        "notFound": "Aucun Product Info trouvé"
+      },
+      "created": "Un nouveau Product Info a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Product Info avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Product Info avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Product Info {{ id }} ?"
+      },
+      "detail": {
+        "title": "Product Info"
+      },
+      "id": "Id",
+      "qtyInStock": "Qty In Stock",
+      "isGlutenFree": "Is Gluten Free",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "product": "Product"
+    }
+  }
+}

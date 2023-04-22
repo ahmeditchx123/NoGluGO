@@ -15,7 +15,7 @@
 
 spring:
   application:
-    name: NoGluGo
+    name: noGluGo
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: test
@@ -58,7 +58,7 @@ jhipster:
   clientApp:
     name: 'noGluGoApp'
   mail:
-    from: NoGluGo@localhost.com
+    from: noGluGo@localhost.com
     base-url: http://127.0.0.1:8080
   logging:
     # To test json console appender

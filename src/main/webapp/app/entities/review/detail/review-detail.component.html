@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="review">
+      <h2 data-cy="reviewDetailsHeading"><span jhiTranslate="noGluGoApp.review.detail.title">Review</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="noGluGoApp.review.id">Id</span></dt>
+        <dd>
+          <span>{{ review.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.title">Title</span></dt>
+        <dd>
+          <span>{{ review.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.content">Content</span></dt>
+        <dd>
+          <span>{{ review.content }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.rating">Rating</span></dt>
+        <dd>
+          <span>{{ review.rating }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ review.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ review.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ review.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ review.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.userId">User Id</span></dt>
+        <dd>
+          <span>{{ review.userId }}</span>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.menuItem">Menu Item</span></dt>
+        <dd>
+          <div *ngIf="review.menuItem">
+            <a [routerLink]="['/menu-item', review.menuItem.id, 'view']">{{ review.menuItem.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="noGluGoApp.review.product">Product</span></dt>
+        <dd>
+          <div *ngIf="review.product">
+            <a [routerLink]="['/product', review.product.id, 'view']">{{ review.product.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/review', review.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

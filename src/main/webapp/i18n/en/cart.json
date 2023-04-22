@@ -1,0 +1,31 @@
+{
+  "noGluGoApp": {
+    "cart": {
+      "home": {
+        "title": "Carts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cart",
+        "createOrEditLabel": "Create or edit a Cart",
+        "notFound": "No Carts found"
+      },
+      "created": "A new Cart is created with identifier {{ param }}",
+      "updated": "A Cart is updated with identifier {{ param }}",
+      "deleted": "A Cart is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Cart {{ id }}?"
+      },
+      "detail": {
+        "title": "Cart"
+      },
+      "id": "Id",
+      "totalItems": "Total Items",
+      "totalPrice": "Total Price",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "userId": "User Id",
+      "cartItems": "Cart Items"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "applications": ["noGluGo"],
+  "changelogDate": "20230408114110",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "gluten_profile",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "diseas",
+      "fieldType": "Diseas",
+      "fieldValues": "CELIAC,GLUTEN_SENSITIVE,GLUTEN_INTOLERENCE,CHRON_DISEAS,IBS,OTHER"
+    },
+    {
+      "fieldName": "otherDiseas",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "strictnessLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "diaryFreePreferenceLvl",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "veganPreferenceLvl",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "ketoPreferenceLvl",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "GlutenProfile",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

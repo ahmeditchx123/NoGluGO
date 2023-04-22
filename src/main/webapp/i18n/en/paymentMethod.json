@@ -1,0 +1,9 @@
+{
+  "noGluGoApp": {
+    "PaymentMethod": {
+      "null": "",
+      "PAYMENT_IN_DELIVERY": "PAYMENT_IN_DELIVERY",
+      "PAYMENT_IN_RETRIEVAL": "PAYMENT_IN_RETRIEVAL"
+    }
+  }
+}

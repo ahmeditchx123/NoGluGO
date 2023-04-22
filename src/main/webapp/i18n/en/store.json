@@ -1,0 +1,36 @@
+{
+  "noGluGoApp": {
+    "store": {
+      "home": {
+        "title": "Stores",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Store",
+        "createOrEditLabel": "Create or edit a Store",
+        "notFound": "No Stores found"
+      },
+      "created": "A new Store is created with identifier {{ param }}",
+      "updated": "A Store is updated with identifier {{ param }}",
+      "deleted": "A Store is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Store {{ id }}?"
+      },
+      "detail": {
+        "title": "Store"
+      },
+      "id": "Id",
+      "name": "Name",
+      "description": "Description",
+      "telephone": "Telephone",
+      "imgPath": "Img Path",
+      "isDedicatedGlutenFree": "Is Dedicated Gluten Free",
+      "website": "Website",
+      "hasDeliveryMode": "Has Delivery Mode",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "storeAddress": "Store Address",
+      "products": "Products"
+    }
+  }
+}
