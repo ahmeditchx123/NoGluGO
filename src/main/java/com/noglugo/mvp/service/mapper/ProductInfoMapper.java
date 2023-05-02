@@ -11,6 +11,6 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface ProductInfoMapper extends EntityMapper<ProductInfoDTO, ProductInfo> {
-    @Mapping(target = "product", ignore = true)
+    @Mapping(target = "product", source = "product", ignore = true)
     ProductInfoDTO toDto(ProductInfo s);
 }
