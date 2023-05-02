@@ -124,3 +124,14 @@ jhipster:
 # ===================================================================
 
 # application:
+twilio:
+  creds:
+    svsid: VA56a0a45653d20fe1474b4b65d4199c3d
+    username: ACf5b894ddbbfa87f7db161872433e6d26
+    password: fc55b701f826bf083a20927db5450191
+dropbox-sign:
+  infos:
+    templateId: 93dfffd63455ec78f66db993dfc73446e5e21fa5
+    role: vendor
+    clientId: 12fc1830d961477158a450cfe0cd8650
+    apiKey: 2d0dad80512d96c20bafabdee765202c0acf665c09302fbbca87144a7ef4160c
