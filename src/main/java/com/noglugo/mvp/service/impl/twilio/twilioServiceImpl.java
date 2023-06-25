@@ -1,6 +1,7 @@
 package com.noglugo.mvp.service.impl.twilio;
 
 import com.noglugo.mvp.service.TwilioService;
+import com.noglugo.mvp.service.UserService;
 import com.noglugo.mvp.web.rest.errors.BadRequestAlertException;
 import com.twilio.Twilio;
 import com.twilio.rest.verify.v2.service.Verification;
@@ -20,6 +21,12 @@ public class twilioServiceImpl implements TwilioService {
     @Value("${twilio.creds.password}")
     private String password;
 
+    private final UserService userService;
+
+    public twilioServiceImpl(UserService userService) {
+        this.userService = userService;
+    }
+
     @Override
     public Verification sendOtpCode(String phoneNumber) {
         Twilio.init(username, password);
@@ -38,7 +45,11 @@ public class twilioServiceImpl implements TwilioService {
     public VerificationCheck verifyOtpCode(String phoneNumber, String otpCode) {
         Twilio.init(username, password);
         try {
-            return VerificationCheck.creator(svsid).setTo("+216" + phoneNumber).setCode(otpCode).create();
+            VerificationCheck verificationCheck = VerificationCheck.creator(svsid).setTo("+216" + phoneNumber).setCode(otpCode).create();
+            if (verificationCheck.getValid()) {
+                userService.activateUserByPhoneNumber(phoneNumber.trim());
+            }
+            return verificationCheck;
         } catch (Exception e) {
             throw new BadRequestAlertException("OTP code has expired", "otp-expired", "otp-expired");
         }

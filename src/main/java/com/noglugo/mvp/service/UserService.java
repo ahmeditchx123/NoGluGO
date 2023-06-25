@@ -69,6 +69,13 @@ public class UserService {
             });
     }
 
+    public AdminUserDTO activateUserByPhoneNumber(String telephone) {
+        User user = userRepository.activateUserByTelephone(telephone);
+        user.setActivated(true);
+        AdminUserDTO userDTO = new AdminUserDTO(userRepository.save(user));
+        return userDTO;
+    }
+
     public Optional<AdminUserDTO> checkEmail(String email) {
         return userRepository.findOneByEmailIgnoreCase(email).map(AdminUserDTO::new);
     }

@@ -108,9 +108,9 @@ jhipster:
 # application:
 twilio:
   creds:
-    svsid: VA56a0a45653d20fe1474b4b65d4199c3d
-    username: ACf5b894ddbbfa87f7db161872433e6d26
-    password: fc55b701f826bf083a20927db5450191
+    svsid: VAc5b7407593862ed421e4f7ee16fe7f51
+    username: AC796f265473644bdea8ac7c5cc38caadb
+    password: 128bc59e5970339eefaed64263452d93
 dropbox-sign:
   infos:
     templateId: 93dfffd63455ec78f66db993dfc73446e5e21fa5
